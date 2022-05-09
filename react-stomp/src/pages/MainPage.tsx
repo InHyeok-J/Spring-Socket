@@ -15,8 +15,8 @@ const MainPage: FunctionComponent = () => {
 					<Block>
 						<p>{userInfo.nickname} 님 안녕하세요!</p>
 						<Line />
-						<CustomButton onClick={() => navigater("/chat")}>
-							채팅 시작!
+						<CustomButton onClick={() => navigater("/room")}>
+							룸 보기
 						</CustomButton>
 					</Block>
 				) : (

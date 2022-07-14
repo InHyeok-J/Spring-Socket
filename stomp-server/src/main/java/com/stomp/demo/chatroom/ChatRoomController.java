@@ -1,10 +1,8 @@
-package com.stomp.demo.controller;
+package com.stomp.demo.chatroom;
 
-import com.stomp.demo.dto.ChatRoomListResponse;
-import com.stomp.demo.dto.ChatRoomResponse;
-import com.stomp.demo.dto.CreateRoomRequest;
-import com.stomp.demo.entity.ChatRoom;
-import com.stomp.demo.service.ChatRoomService;
+import com.stomp.demo.chatroom.dto.ChatRoomListResponse;
+import com.stomp.demo.chatroom.dto.ChatRoomResponse;
+import com.stomp.demo.chatroom.dto.CreateRoomRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

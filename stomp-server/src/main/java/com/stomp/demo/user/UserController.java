@@ -1,10 +1,8 @@
-package com.stomp.demo.controller;
+package com.stomp.demo.user;
 
-import com.stomp.demo.dto.SignInRequest;
-import com.stomp.demo.dto.SignUpRequest;
-import com.stomp.demo.dto.UserResponse;
-import com.stomp.demo.entity.User;
-import com.stomp.demo.service.UserService;
+import com.stomp.demo.user.dto.SignInRequest;
+import com.stomp.demo.user.dto.SignUpRequest;
+import com.stomp.demo.user.dto.UserResponse;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

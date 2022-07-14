@@ -1,4 +1,4 @@
-package com.stomp.demo.dto;
+package com.stomp.demo.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

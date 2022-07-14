@@ -1,6 +1,6 @@
-package com.stomp.demo.dto;
+package com.stomp.demo.user.dto;
 
-import com.stomp.demo.entity.User;
+import com.stomp.demo.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

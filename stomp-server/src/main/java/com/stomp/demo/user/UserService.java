@@ -1,13 +1,10 @@
-package com.stomp.demo.service;
+package com.stomp.demo.user;
 
-import com.stomp.demo.dto.SignInRequest;
-import com.stomp.demo.dto.SignUpRequest;
-import com.stomp.demo.entity.User;
+import com.stomp.demo.user.dto.SignInRequest;
+import com.stomp.demo.user.dto.SignUpRequest;
 import com.stomp.demo.exception.InvalidValueException;
 import com.stomp.demo.exception.NotFoundEntityException;
-import com.stomp.demo.repository.UserRepository;
 import java.util.Optional;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +19,14 @@ public class UserService {
   }
 
   public User login(SignInRequest request) {
-    Optional<User> findUser = userRepository.findByNickname(request.getNickname());
-    findUser.orElseThrow(() -> new NotFoundEntityException("user"));
-    if (!findUser.get().getPassword().equals(request.getPassword())) {
+    User findUser = userRepository.findByNickname(request.getNickname())
+        .orElseThrow(() -> new NotFoundEntityException("user"));
+
+    if (!findUser.getPassword().equals(request.getPassword())) {
       throw new InvalidValueException("password가 일치하지 않습니다");
     }
-    return findUser.get();
+
+    return findUser;
   }
 
   public User getUser(String userId) {

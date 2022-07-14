@@ -1,6 +1,6 @@
-package com.stomp.demo.repository;
+package com.stomp.demo.chatroom;
 
-import com.stomp.demo.entity.ChatRoom;
+import com.stomp.demo.chatroom.ChatRoom;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

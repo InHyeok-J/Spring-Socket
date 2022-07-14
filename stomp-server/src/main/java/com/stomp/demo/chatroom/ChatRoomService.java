@@ -1,9 +1,7 @@
-package com.stomp.demo.service;
+package com.stomp.demo.chatroom;
 
-import com.stomp.demo.dto.CreateRoomRequest;
-import com.stomp.demo.entity.ChatRoom;
+import com.stomp.demo.chatroom.dto.CreateRoomRequest;
 import com.stomp.demo.exception.NotFoundEntityException;
-import com.stomp.demo.repository.ChatRoomRepository;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

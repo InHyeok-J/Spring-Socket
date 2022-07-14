@@ -1,4 +1,4 @@
-package com.stomp.demo.entity;
+package com.stomp.demo.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

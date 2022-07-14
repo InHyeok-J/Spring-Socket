@@ -22,4 +22,11 @@ public class ControllerExceptionHandler {
     ErrorResponse response = new ErrorResponse("2", e.getMessage());
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
+
+  @ExceptionHandler(AuthenticationFailException.class)
+  protected ResponseEntity<?> authenticationFailError(
+      AuthenticationFailException e) {
+    ErrorResponse response = new ErrorResponse("3", e.getMessage());
+    return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+  }
 }

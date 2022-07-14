@@ -26,12 +26,9 @@ const SignInPage = () => {
 		};
 		try {
 			const response = await axios.post("/api/user/sign-in", requestData);
-			console.log(response);
+			console.log(response.data);
 			alert("로그인 성공!");
-			setUser({
-				nickname: response.data.nickname,
-				userId: response.data.userId,
-			});
+			localStorage.setItem("login-token", response.data.accessToken);
 			navigater("/");
 		} catch (e: any) {
 			const errorBody: { errorCase: string; message: string } = e.response.data;

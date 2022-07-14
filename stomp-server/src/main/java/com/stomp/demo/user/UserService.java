@@ -13,12 +13,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   private final UserRepository userRepository;
+  private final TokenProvider tokenProvider;
 
   public User signUp(SignUpRequest request) {
     return userRepository.save(request.toEntity());
   }
 
-  public User login(SignInRequest request) {
+  public Token login(SignInRequest request) {
     User findUser = userRepository.findByNickname(request.getNickname())
         .orElseThrow(() -> new NotFoundEntityException("user"));
 
@@ -26,7 +27,7 @@ public class UserService {
       throw new InvalidValueException("password가 일치하지 않습니다");
     }
 
-    return findUser;
+    return tokenProvider.createToken(findUser.getId(), findUser.getNickname());
   }
 
   public User getUser(String userId) {

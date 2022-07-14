@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +23,7 @@ public class UserController {
 
   @PostMapping("/api/user/sign-up")
   public ResponseEntity<?> signUp(@RequestBody SignUpRequest dto) {
-    System.out.println("--");
+
     User user = userService.signUp(dto);
     return ResponseEntity.ok()
         .body(UserResponse.of(user));
@@ -29,23 +31,18 @@ public class UserController {
 
   @PostMapping("/api/user/sign-in")
   public ResponseEntity<?> signIn(@RequestBody SignInRequest dto) {
-    User user = userService.login(dto);
-
-    session.setAttribute("sessionId", user.getId());
+    Token  token = userService.login(dto);
 
     return ResponseEntity.ok()
-        .body(UserResponse.of(user));
+        .body(token);
   }
 
   @GetMapping("/api/user")
   public ResponseEntity<?> getUser() {
-    Object userId = session.getAttribute("sessionId");
-    if (userId == null) {
-      return new ResponseEntity(HttpStatus.BAD_REQUEST);
-    } else {
-      User user = userService.getUser(userId.toString());
-      return ResponseEntity.ok()
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Long userId = Long.valueOf(auth.getPrincipal().toString());
+    User user = userService.getUser(userId.toString());
+    return ResponseEntity.ok()
           .body(UserResponse.of(user));
-    }
   }
 }

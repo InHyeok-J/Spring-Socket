@@ -6,8 +6,8 @@ import CommonTemplate from "../components/CommonTemplate";
 
 const SignUpPage = () => {
 	const navigater = useNavigate();
-	const [nickname, setNickname] = useState<string | null>(null);
-	const [password, setPassword] = useState<string | null>(null);
+	const [nickname, setNickname] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
 
 	const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNickname(e.target.value);

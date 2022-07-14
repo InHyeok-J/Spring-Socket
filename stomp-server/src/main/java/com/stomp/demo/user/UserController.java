@@ -38,11 +38,9 @@ public class UserController {
   }
 
   @GetMapping("/api/user")
-  public ResponseEntity<?> getUser() {
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    Long userId = Long.valueOf(auth.getPrincipal().toString());
-    User user = userService.getUser(userId.toString());
+  public ResponseEntity<?> getUser(@LoginUser AuthUser user) {
+
     return ResponseEntity.ok()
-          .body(UserResponse.of(user));
+          .body(UserResponse.of(userService.getUser(user.getUserId())));
   }
 }

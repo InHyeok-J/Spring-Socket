@@ -30,8 +30,8 @@ public class UserService {
     return tokenProvider.createToken(findUser.getId(), findUser.getNickname());
   }
 
-  public User getUser(String userId) {
-    Optional<User> findUser = userRepository.findById(Long.valueOf(userId));
+  public User getUser(Long userId) {
+    Optional<User> findUser = userRepository.findById(userId);
     findUser.orElseThrow(() -> new NotFoundEntityException("user"));
     return findUser.get();
   }

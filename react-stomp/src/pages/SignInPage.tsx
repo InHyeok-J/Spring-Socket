@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import CommonTemplate from "../components/CommonTemplate";
+import { LOGIN_TOKEN } from "../constant/LoginToken";
 import { useStore } from "../store";
 
 const SignInPage = () => {
@@ -28,7 +29,7 @@ const SignInPage = () => {
 			const response = await axios.post("/api/user/sign-in", requestData);
 			console.log(response.data);
 			alert("로그인 성공!");
-			localStorage.setItem("login-token", response.data.accessToken);
+			localStorage.setItem(LOGIN_TOKEN, response.data.accessToken);
 			navigater("/");
 		} catch (e: any) {
 			const errorBody: { errorCase: string; message: string } = e.response.data;

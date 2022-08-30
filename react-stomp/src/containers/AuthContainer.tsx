@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
+import { LOGIN_TOKEN } from "../constant/LoginToken";
 import { useStore } from "../store";
 
 const AuthContainer = () => {
@@ -24,7 +25,7 @@ const AuthContainer = () => {
 
 		if (!user) {
 			//유저데이터가 없는 경우,
-			const savedToken = localStorage.getItem("login-token");
+			const savedToken = localStorage.getItem(LOGIN_TOKEN);
 			console.log("저장된 토큰 : " + savedToken);
 			if (!savedToken) {
 				alert("로그인이 필요합니다.");
@@ -39,7 +40,7 @@ const AuthContainer = () => {
 				} catch (err: any) {
 					console.error("로그인 실패");
 					//JWT 토큰이 있어서 요청 보냈는데 실패하는 경우
-					localStorage.removeItem("login-token");
+					localStorage.removeItem(LOGIN_TOKEN);
 					navigator("/sign-in");
 				}
 			})();

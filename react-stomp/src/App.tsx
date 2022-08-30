@@ -14,8 +14,9 @@ function Root() {
 			<Route path="/" element={<AuthContainer />}>
 				<Route path="" element={<MainPage />} />
 				<Route path="room" element={<RoomListPage />} />
-				<Route path="room/chat/:id" element={<RoomChatPage />} />
 			</Route>
+			<Route path="/room/chat/:id" element={<RoomChatPage />} />
+
 			<Route path="/sign-up" element={<SignUpPage />} />
 			<Route path="/sign-in" element={<SignInPage />} />
 		</Routes>

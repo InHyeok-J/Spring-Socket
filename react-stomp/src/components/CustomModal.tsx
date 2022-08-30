@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import axios from "axios";
 import { FunctionComponent, useState } from "react";
+import { axiosPostWithToken } from "../api/AxiosWithToken";
+import { LOGIN_TOKEN } from "../constant/LoginToken";
 
 type CustomModalType = {
 	closeModal: Function;
@@ -15,8 +17,11 @@ const CustomModal: FunctionComponent<CustomModalType> = ({ closeModal }) => {
 	const createRoom = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		try {
-			const response = await axios.post("/api/room", { roomName });
-			console.log(response.data);
+			const token = localStorage.getItem(LOGIN_TOKEN);
+			const response = await axiosPostWithToken("/api/room", token!, {
+				roomName,
+			});
+			console.log(response);
 			alert("방생성 성공");
 			closeModal();
 		} catch (err: any) {

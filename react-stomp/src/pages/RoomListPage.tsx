@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import CustomModal from "../components/CustomModal";
 import axios from "axios";
 import Room from "../components/Room";
+import { LOGIN_TOKEN } from "../constant/LoginToken";
+import { axiosGetWithToken } from "../api/AxiosWithToken";
 
 const RoomListPage = () => {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -18,9 +20,10 @@ const RoomListPage = () => {
 
 	useEffect(() => {
 		const getRoomList = async () => {
-			const response = await axios.get("/api/room/list");
-			console.log(response.data);
-			setRoomList(response.data.rooms);
+			const token = localStorage.getItem(LOGIN_TOKEN);
+			const response = await axiosGetWithToken("/api/room/list", token!);
+			console.log(response);
+			setRoomList(response.rooms);
 		};
 		getRoomList();
 	}, []);

@@ -2,6 +2,7 @@ package com.stomp.demo.chatroom;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class ChatRoom {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "chat_room_id")
   private Long id;
 
   private String name;
@@ -30,7 +32,7 @@ public class ChatRoom {
     this.name = name;
   }
 
-  public void addMessage(Message message){
+  public void addMessage(Message message) {
     this.chatMessages.add(message);
   }
 }

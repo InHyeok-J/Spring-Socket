@@ -25,7 +25,7 @@ public class Message {
   private Long senderId;
 
   @ManyToOne
-  @JoinColumn(name = "char_room_id")
+  @JoinColumn(name = "chat_room_id")
   private ChatRoom chatRoom;
 
   @Builder

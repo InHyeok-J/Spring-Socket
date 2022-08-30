@@ -13,8 +13,8 @@ public class ChatRoomService {
 
   private final ChatRoomRepository chatRoomRepository;
 
-  public ChatRoom creatRoom(CreateRoomRequest req) {
-    return chatRoomRepository.save(req.toEntity());
+  public void creatRoom(CreateRoomRequest req) {
+    chatRoomRepository.save(req.toEntity());
   }
 
   public List<ChatRoom> getRoomList() {

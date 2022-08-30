@@ -20,9 +20,8 @@ public class ChatRoomController {
 
   @PostMapping("/api/room")
   public ResponseEntity<?> creatRoom(@RequestBody CreateRoomRequest request) {
-    ChatRoom chatRoom = chatRoomService.creatRoom(request);
-    return ResponseEntity.ok()
-        .body(ChatRoomResponse.of(chatRoom));
+    chatRoomService.creatRoom(request);
+    return ResponseEntity.ok().build();
   }
 
   @GetMapping("/api/room/list")
